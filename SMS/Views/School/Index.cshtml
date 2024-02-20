@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SMS.Models.School>
+
+@{
+	int idNo = 1;
+}
+
+<a asp-action="CreateOrEdit" asp-controller="School" class="btn btn-primary mb-3">Input</a>
+
+<table class="table table-dark table-bordered">
+	<thead>
+		<tr>
+			<th>Id</th>
+			<th>Name</th>
+			<th>Roll</th>
+			<th>Age</th>
+			<th>Address</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach(var itam in Model)
+		{
+			<tr>
+				<td>@idNo</td>
+				<td>@itam.Name</td>
+				<td>@itam.Roll</td>
+				<td>@itam.Age</td>
+				<td>@itam.Address</td>
+				<td>
+					<a asp-action="CreateOrEdit" asp-controller="School" asp-route-id="@itam.Id" class="btn btn-success">Edits</a>
+					<a asp-action="Delted" asp-controller="School" asp-route-id="@itam.Id" class="btn btn-danger" onclick="return alert('are you sure deleted this  data?')">Delted</a>
+					<a asp-action="Details" asp-controller="School" asp-route-id="@itam.Id" class="btn btn-primary">Details</a>
+				</td>
+
+
+			</tr>
+			idNo++ ;
+		}
+	</tbody>
+</table>
